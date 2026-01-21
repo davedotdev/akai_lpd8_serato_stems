@@ -1,0 +1,196 @@
+<midi app="Serato DJ Pro 4.0.2.338">
+    <!-- ============================================== -->
+    <!-- Akai LPD8 - Deck 1 Stem Control Mapping        -->
+    <!-- Knobs: Stem Volume | Pads 1-4: On/Off | 5-8: FX -->
+    <!-- ============================================== -->
+
+    <!-- KNOBS 1-4: Stem Volume/Gain (Channel 1, CC 70-73) -->
+
+    <!-- Knob 1 - Vocals Gain (Slot 0) - CC 70 -->
+    <control channel="1" event_type="Control Change" data_type="Absolute 7" control="70">
+        <userio event="click">
+            <codfather_gain deck_set="Default" deck_id="0" slot_id="0">
+                <translation action_on="any" behaviour="explicit">
+                    <range in_min="0" in_max="127" out_min="0" out_max="64"/>
+                </translation>
+            </codfather_gain>
+        </userio>
+    </control>
+
+    <!-- Knob 2 - Drums Gain (Slot 1) - CC 71 -->
+    <control channel="1" event_type="Control Change" data_type="Absolute 7" control="71">
+        <userio event="click">
+            <codfather_gain deck_set="Default" deck_id="0" slot_id="1">
+                <translation action_on="any" behaviour="explicit">
+                    <range in_min="0" in_max="127" out_min="0" out_max="64"/>
+                </translation>
+            </codfather_gain>
+        </userio>
+    </control>
+
+    <!-- Knob 3 - Bass Gain (Slot 2) - CC 72 -->
+    <control channel="1" event_type="Control Change" data_type="Absolute 7" control="72">
+        <userio event="click">
+            <codfather_gain deck_set="Default" deck_id="0" slot_id="2">
+                <translation action_on="any" behaviour="explicit">
+                    <range in_min="0" in_max="127" out_min="0" out_max="64"/>
+                </translation>
+            </codfather_gain>
+        </userio>
+    </control>
+
+    <!-- Knob 4 - Melody Gain (Slot 3) - CC 73 -->
+    <control channel="1" event_type="Control Change" data_type="Absolute 7" control="73">
+        <userio event="click">
+            <codfather_gain deck_set="Default" deck_id="0" slot_id="3">
+                <translation action_on="any" behaviour="explicit">
+                    <range in_min="0" in_max="127" out_min="0" out_max="64"/>
+                </translation>
+            </codfather_gain>
+        </userio>
+    </control>
+
+    <!-- ============================================== -->
+    <!-- PADS 1-4 (Bottom Row): Stem FX Toggle          -->
+    <!-- ============================================== -->
+
+    <!-- Pad 1 - Vocals FX (Slot 0) -->
+    <control channel="10" event_type="Note On" control="36">
+        <userio event="click">
+            <codfather_fx deck_set="Default" deck_id="0" slot_id="0">
+                <translation action_on="press" behaviour="toggle"/>
+            </codfather_fx>
+        </userio>
+        <userio event="output">
+            <codfather_fx deck_set="Default" deck_id="0" slot_id="0">
+                <translation action_on="any">
+                    <alias name="on" value="127"/>
+                    <alias name="off" value="0"/>
+                </translation>
+            </codfather_fx>
+        </userio>
+    </control>
+
+    <!-- Pad 2 - Drums FX (Slot 1) -->
+    <control channel="10" event_type="Note On" control="37">
+        <userio event="click">
+            <codfather_fx deck_set="Default" deck_id="0" slot_id="1">
+                <translation action_on="press" behaviour="toggle"/>
+            </codfather_fx>
+        </userio>
+        <userio event="output">
+            <codfather_fx deck_set="Default" deck_id="0" slot_id="1">
+                <translation action_on="any">
+                    <alias name="on" value="127"/>
+                    <alias name="off" value="0"/>
+                </translation>
+            </codfather_fx>
+        </userio>
+    </control>
+
+    <!-- Pad 3 - Bass FX (Slot 2) -->
+    <control channel="10" event_type="Note On" control="38">
+        <userio event="click">
+            <codfather_fx deck_set="Default" deck_id="0" slot_id="2">
+                <translation action_on="press" behaviour="toggle"/>
+            </codfather_fx>
+        </userio>
+        <userio event="output">
+            <codfather_fx deck_set="Default" deck_id="0" slot_id="2">
+                <translation action_on="any">
+                    <alias name="on" value="127"/>
+                    <alias name="off" value="0"/>
+                </translation>
+            </codfather_fx>
+        </userio>
+    </control>
+
+    <!-- Pad 4 - Melody FX (Slot 3) -->
+    <control channel="10" event_type="Note On" control="39">
+        <userio event="click">
+            <codfather_fx deck_set="Default" deck_id="0" slot_id="3">
+                <translation action_on="press" behaviour="toggle"/>
+            </codfather_fx>
+        </userio>
+        <userio event="output">
+            <codfather_fx deck_set="Default" deck_id="0" slot_id="3">
+                <translation action_on="any">
+                    <alias name="on" value="127"/>
+                    <alias name="off" value="0"/>
+                </translation>
+            </codfather_fx>
+        </userio>
+    </control>
+
+    <!-- ============================================== -->
+    <!-- PADS 5-8 (Top Row): Stem On/Off Toggle         -->
+    <!-- ============================================== -->
+
+    <!-- Pad 5 - Vocals On/Off (Slot 0) -->
+    <control channel="10" event_type="Note On" control="40">
+        <userio event="click">
+            <codfather_st deck_set="Default" deck_id="0" slot_id="0">
+                <translation action_on="press" behaviour="toggle"/>
+            </codfather_st>
+        </userio>
+        <userio event="output">
+            <codfather_st deck_set="Default" deck_id="0" slot_id="0">
+                <translation action_on="any">
+                    <alias name="on" value="127"/>
+                    <alias name="off" value="0"/>
+                </translation>
+            </codfather_st>
+        </userio>
+    </control>
+
+    <!-- Pad 6 - Drums On/Off (Slot 1) -->
+    <control channel="10" event_type="Note On" control="41">
+        <userio event="click">
+            <codfather_st deck_set="Default" deck_id="0" slot_id="1">
+                <translation action_on="press" behaviour="toggle"/>
+            </codfather_st>
+        </userio>
+        <userio event="output">
+            <codfather_st deck_set="Default" deck_id="0" slot_id="1">
+                <translation action_on="any">
+                    <alias name="on" value="127"/>
+                    <alias name="off" value="0"/>
+                </translation>
+            </codfather_st>
+        </userio>
+    </control>
+
+    <!-- Pad 7 - Bass On/Off (Slot 2) -->
+    <control channel="10" event_type="Note On" control="42">
+        <userio event="click">
+            <codfather_st deck_set="Default" deck_id="0" slot_id="2">
+                <translation action_on="press" behaviour="toggle"/>
+            </codfather_st>
+        </userio>
+        <userio event="output">
+            <codfather_st deck_set="Default" deck_id="0" slot_id="2">
+                <translation action_on="any">
+                    <alias name="on" value="127"/>
+                    <alias name="off" value="0"/>
+                </translation>
+            </codfather_st>
+        </userio>
+    </control>
+
+    <!-- Pad 8 - Melody On/Off (Slot 3) -->
+    <control channel="10" event_type="Note On" control="43">
+        <userio event="click">
+            <codfather_st deck_set="Default" deck_id="0" slot_id="3">
+                <translation action_on="press" behaviour="toggle"/>
+            </codfather_st>
+        </userio>
+        <userio event="output">
+            <codfather_st deck_set="Default" deck_id="0" slot_id="3">
+                <translation action_on="any">
+                    <alias name="on" value="127"/>
+                    <alias name="off" value="0"/>
+                </translation>
+            </codfather_st>
+        </userio>
+    </control>
+</midi>
