@@ -4,8 +4,7 @@ A complete solution for controlling Serato DJ Pro stems with the Akai LPD8 MK2, 
 
 ## Demo
 
-<!-- TODO: Add YouTube video link -->
-[Video coming soon]
+[![Watch the demo](https://img.youtube.com/vi/J7mygkCKj6E/maxresdefault.jpg)](https://youtu.be/J7mygkCKj6E)
 
 ## Background
 
