@@ -168,7 +168,7 @@ This setup was developed with a DJM-S11 mixer and PLX-CRSS12 turntables, but it 
 
 **Coming soon:** Rane Performer support (documentation updates in the next few weeks).
 
-**Note on releases:** The initial release is for macOS (Apple Silicon/ARM). A Windows x64 build will follow shortly - just wanted to get this out there early for sharing.
+**Note on releases:** The initial release is for macOS (Apple Silicon/ARM and AMD64). A Windows x64 build will follow shortly - just wanted to get this out there early for sharing.
 
 **Useful resource:** [lpd8mk2sysex](https://github.com/john-kuan/lpd8mk2sysex) was invaluable for figuring out the SysEx commands to control the LPD8 MK2's RGB LEDs.
 

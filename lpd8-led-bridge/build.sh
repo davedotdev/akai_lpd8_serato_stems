@@ -37,18 +37,33 @@ echo "Detected platform: $CURRENT_OS/$CURRENT_ARCH"
 echo ""
 
 # Build for current platform
-echo "Building for $CURRENT_OS/$CURRENT_ARCH..."
 if [ "$CURRENT_OS" = "windows" ]; then
     EXT=".exe"
 else
     EXT=""
 fi
 
-go build -ldflags "-X main.Version=$VERSION" -o "$OUTPUT_DIR/${APP_NAME}-${CURRENT_OS}-${CURRENT_ARCH}${EXT}" .
+# On macOS, build for both arm64 and amd64
+if [ "$CURRENT_OS" = "darwin" ]; then
+    echo "Building for darwin/arm64..."
+    CGO_ENABLED=1 GOOS=darwin GOARCH=arm64 CGO_CFLAGS="-arch arm64" CGO_LDFLAGS="-arch arm64" \
+        go build -ldflags "-X main.Version=$VERSION" -o "$OUTPUT_DIR/${APP_NAME}-darwin-arm64" .
 
-# Generate default config
+    echo "Building for darwin/amd64..."
+    CGO_ENABLED=1 GOOS=darwin GOARCH=amd64 CGO_CFLAGS="-arch x86_64" CGO_LDFLAGS="-arch x86_64" \
+        go build -ldflags "-X main.Version=$VERSION" -o "$OUTPUT_DIR/${APP_NAME}-darwin-amd64" .
+else
+    echo "Building for $CURRENT_OS/$CURRENT_ARCH..."
+    go build -ldflags "-X main.Version=$VERSION" -o "$OUTPUT_DIR/${APP_NAME}-${CURRENT_OS}-${CURRENT_ARCH}${EXT}" .
+fi
+
+# Generate default config (use current architecture binary)
 echo "Generating default config..."
-"$OUTPUT_DIR/${APP_NAME}-${CURRENT_OS}-${CURRENT_ARCH}${EXT}" -genconfig "$OUTPUT_DIR/config.json"
+if [ "$CURRENT_OS" = "darwin" ]; then
+    "$OUTPUT_DIR/${APP_NAME}-darwin-${CURRENT_ARCH}" -genconfig "$OUTPUT_DIR/config.json"
+else
+    "$OUTPUT_DIR/${APP_NAME}-${CURRENT_OS}-${CURRENT_ARCH}${EXT}" -genconfig "$OUTPUT_DIR/config.json"
+fi
 
 echo ""
 echo "Build complete! Files in $OUTPUT_DIR/:"
@@ -58,7 +73,5 @@ echo ""
 echo "Note: Due to CGO dependencies (rtmidi), cross-compilation requires"
 echo "building on each target platform or using Docker with native toolchains."
 echo ""
-echo "To build for other platforms, run this script on:"
-echo "  - Windows (AMD64 or 386)"
-echo "  - macOS ARM64 (Apple Silicon)"
-echo "  - macOS AMD64 (Intel Mac)"
+echo "macOS builds both arm64 and amd64 automatically."
+echo "To build for Windows, run this script on a Windows machine."
